@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Input } from '../input';
 
-describe('<InputFieldRow> component', () => {
+describe('<Input> component', () => {
   test('contains a label and input element', () => {
     render(
       <Input

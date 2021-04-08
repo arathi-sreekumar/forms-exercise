@@ -11,10 +11,10 @@ interface OwnProps {
   label: string;
   error?: string | JSX.Element;
   isValid: boolean;
-  isRequired?: boolean;
+  required?: boolean;
 }
 
-export type InputProps = OwnProps & Partial<Omit<HTMLInputElement, keyof OwnProps>>;
+export type InputProps = OwnProps & Partial<Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof OwnProps>>;
 
 export const Input: React.FC<InputProps> = ({
   id,
@@ -24,8 +24,9 @@ export const Input: React.FC<InputProps> = ({
   label,
   error,
   isValid,
-  isRequired = false,
-  type = 'text'
+  required = false,
+  type = 'text',
+  ...props
 }) => {
   const [isDirty, setIsDirty] = useState(!!value.length);
 
@@ -44,7 +45,7 @@ export const Input: React.FC<InputProps> = ({
     <div className={clsx({['formField']: true, ['error']: showError})}>
       <label htmlFor={id}>
         {label}
-        {isRequired && <span className="required-symbol">*</span>}
+        {required && <span className="required-symbol">*</span>}
       </label>
       <input
         data-testid={`${id}-input`}
@@ -53,6 +54,8 @@ export const Input: React.FC<InputProps> = ({
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
+        required={required}
+        {...props}
       />
       {<div className='errorMessage'>{isDirty && error}</div>}
     </div>

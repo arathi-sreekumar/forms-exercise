@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { User } from '../../../core/types';
+import { VALIDATION_EMAIL_REGEX, VALIDATION_PASSWORD_REGEX } from '../../../core/constants';
 import { Input } from '../../../core/form/input/input';
+import { Button } from '../../../core/form/button/button';
 
 interface Props {
   user: User;
@@ -12,6 +14,14 @@ interface Errors {
   name?: string;
   email?: string;
   password?: string;
+}
+
+export const ERROR_MSGS = {
+  REQUIRED_NAME: 'Name is required',
+  INVALID_EMAIL: 'Please enter a valid email',
+  REQUIRED_EMAIL: 'Email is required',
+  INVALID_PASSWORD: 'Password must have atleast 9 characters with one uppercase character, one lower case character and a number',
+  REQUIRED_PASSWORD: 'Password is required'
 }
 
 export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
@@ -33,24 +43,28 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
 
   const validateName = (name: string) => {
     if (!name || !name.length) {
-      return 'Name is required'
+      return ERROR_MSGS.REQUIRED_NAME;
     }
   }
 
   const validateEmail = (email: string) => {
     if (!email || !email.length) {
-      return 'Email is required';
+      return ERROR_MSGS.REQUIRED_EMAIL;
     }
 
-    //todo: validate email with regex
+    if (!VALIDATION_EMAIL_REGEX.test(email)) {
+      return ERROR_MSGS.INVALID_EMAIL;
+    }
   }
 
   const validatePassword = (password: string) => {
     if (!password || !password.length) {
-      return 'Password is required';
+      return ERROR_MSGS.REQUIRED_PASSWORD;
     }
 
-    //todo: validate password with regex
+    if (!VALIDATION_PASSWORD_REGEX.test(password)) {
+      return ERROR_MSGS.INVALID_PASSWORD;
+    }
   }
 
   const validate = (userToValidate: User) => {
@@ -90,6 +104,10 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
     setErrors(newErrors);
   }
 
+  const submitUser = () => {
+    onSubmit(user);
+  }
+
   return (
     <div>
       <Input
@@ -100,7 +118,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         label="Name: "
         isValid={!hasError('name')}
         error={getError('name')}
-        isRequired={true}
+        required={true}
       />
       <Input
         id="role"
@@ -109,7 +127,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         onBlur={handleBlur('role')}
         label="Role: "
         isValid={true}
-        isRequired={false}
+        required={false}
       />
       <Input
         id="email"
@@ -119,8 +137,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         label="Email: "
         isValid={!hasError('email')}
         error={getError('email')}
-        isRequired={true}
-        type="email"
+        required={true}
       />
       <Input
         id="password"
@@ -130,9 +147,12 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         label="Password: "
         isValid={!hasError('password')}
         error={getError('password')}
-        isRequired={true}
+        required={true}
         type="password"
       />
+      <div>
+        <Button disabled={!isValid} onClick={submitUser} data-testid="submit-user">Submit</Button>
+      </div>
     </div>
   );
 }

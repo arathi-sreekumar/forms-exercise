@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+
+import { STEPS } from '../core/constants';
 import { User } from '../core/types';
 import { UserStep } from './components/user/user';
 
 import './onboarding.scss';
+import { ProgressBar } from './components/progress/progress';
 
 const initialiseUser = () => ({
   name: '',
@@ -12,16 +15,27 @@ const initialiseUser = () => ({
 });
 
 export const OnBoarding = () => {
+  const [step, setStep] = useState<STEPS>(STEPS.USER);
   const [user, setUser] = useState<User>(initialiseUser());
 
-  const updateUser = (user: User) => {
+  const updateUserAndNext = (user: User) => {
     setUser(user);
+    setStep(STEPS.PRIVACY);
+  }
+
+  const getStepToDisplay = () => {
+    switch (step) {
+      case STEPS.USER: return <UserStep user={user} onSubmit={updateUserAndNext} />;
+      case STEPS.PRIVACY: return (<div> TODO PRIVACY </div>);
+      case STEPS.DONE: return <div>TODO DONE PAGE</div>
+    }
   }
 
   return (
-    <main className="main" data-testid="">
+    <main className="main">
       <h1>Onboarding</h1>
-      <UserStep user={user} onSubmit={updateUser} />
+      <ProgressBar currentStep={step} />
+      {getStepToDisplay()}
     </main>
   );
 }

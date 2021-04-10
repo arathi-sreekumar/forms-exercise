@@ -32,6 +32,6 @@ describe('<OnBoarding> component', () => {
 
     userEvent.click(screen.getByText('Submit'));
 
-    expect(screen.getByText('TODO DONE PAGE')).toBeInTheDocument();
+    expect(screen.getByText('Please verify your email address, you should have received an email from us already!')).toBeInTheDocument();
   });
 });

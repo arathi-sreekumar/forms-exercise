@@ -5,6 +5,7 @@ import { User, Privacy } from '../core/types';
 import { PrivacyStep } from './components/privacy/privacy';
 import { ProgressBar } from './components/progress/progress';
 import { UserStep } from './components/user/user';
+import { DoneStep } from './components/done/done';
 
 import './onboarding.scss';
 
@@ -39,7 +40,7 @@ export const OnBoarding = () => {
     switch (step) {
       case STEPS.USER: return <UserStep user={user} onSubmit={updateUserAndNext} />;
       case STEPS.PRIVACY: return <PrivacyStep privacy={privacy} onSubmit={updatePrivacyAndNext} />;
-      case STEPS.DONE: return <div>TODO DONE PAGE</div>
+      case STEPS.DONE: return <DoneStep />;
       default: return;
     }
   }

@@ -1,0 +1,8 @@
+**/node_modules/*
+**/build/*
+**/tests-dist/*
+**/coverage/*
+**/typings/*
+**/stats/*
+**/doc/*
+**/images/*

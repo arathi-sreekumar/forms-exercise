@@ -1,7 +1,7 @@
 export enum STEPS {
   USER = 0,
-  PRIVACY = 1,
-  DONE = 2
+  PRIVACY,
+  DONE
 }
 
 export const VALIDATION_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

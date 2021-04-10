@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, queryByText } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { OnBoarding } from '../onboarding';
 import userEvent from '@testing-library/user-event';
 

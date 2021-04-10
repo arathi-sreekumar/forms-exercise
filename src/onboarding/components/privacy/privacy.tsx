@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React, { useState } from 'react';
 import { Button } from '../../../core/form/button/button';
 import { Checkbox } from '../../../core/form/checkbox/checkbox';

@@ -31,7 +31,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
 
   useEffect(() => {
     validate(user);
-  }, [user]);
+  }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getError = (field: keyof Errors) => {
     return errors && errors[field];
@@ -79,7 +79,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
     setIsValid(isValid);
 
     return isValid;
-  }
+  };
 
   const handleChange = (field: keyof User) => (value: string) => {
     const newUser = {
@@ -89,7 +89,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
     setUser(newUser);
   }
 
-  const handleBlur = (field: keyof User) => (value: string) => {
+  const handleBlur = (field: keyof User) => () => {
     const newErrors: Errors = {
       ...errors
     };
@@ -99,6 +99,8 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
       case 'email': newErrors.email = validateEmail(user.email);
         break;
       case 'password': newErrors.password = validatePassword(user.password);
+        break;
+      default: //nothing required
     }
 
     setErrors(newErrors);

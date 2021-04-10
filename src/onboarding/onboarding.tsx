@@ -40,6 +40,7 @@ export const OnBoarding = () => {
       case STEPS.USER: return <UserStep user={user} onSubmit={updateUserAndNext} />;
       case STEPS.PRIVACY: return <PrivacyStep privacy={privacy} onSubmit={updatePrivacyAndNext} />;
       case STEPS.DONE: return <div>TODO DONE PAGE</div>
+      default: return;
     }
   }
 

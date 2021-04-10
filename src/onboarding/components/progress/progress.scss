@@ -1,16 +1,39 @@
 .progress-bar {
   display: flex;
   flex-direction: row;
+  margin: 20px 0;
+  justify-content: center;
 }
 
 .step {
-  padding: 20px;
+  padding: 5px 10px;
   border-radius: 5px;
+  font-size: 14px;
+  margin-right: 40px;
+  position: relative;
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+.step::after {
+  position: absolute;
+  content: '';
+  width: 40px;
+  height: 1px;
+  border-top: 1px solid lightgray;
+  left: 100%;
+  top: 50%;
 }
 
 .prev {
   color: black;
-  background-color: lawngreen;
+  background-color: #50c878;
+
+  &::after {
+    border-color: #50c878;
+  }
 }
 
 .current {
@@ -19,6 +42,6 @@
 }
 
 .next {
-  color: black;
-  background-color: gray;
+  color: slategray;
+  background-color: lightgray;
 }

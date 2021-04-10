@@ -110,6 +110,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
 
   return (
     <div>
+      <h2>User</h2>
       <Input
         id="name"
         value={user.name}

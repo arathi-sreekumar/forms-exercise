@@ -33,6 +33,10 @@ export const OnBoarding = () => {
 
   const updatePrivacyAndNext = (privacy: Privacy) => {
     setPrivacy(privacy);
+    console.log('Complete form parameters: ', {
+      ...user,
+      ...privacy
+    });
     setStep(STEPS.DONE);
   }
 
@@ -47,7 +51,6 @@ export const OnBoarding = () => {
 
   return (
     <main className="main">
-      <h1>Join Us</h1>
       <ProgressBar currentStep={step} />
       {getStepToDisplay()}
     </main>

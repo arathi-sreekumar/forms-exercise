@@ -1,0 +1,16 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: red;
+  text-transform: uppercase;
+  font-size: 10px;
+  height: 12px;
+  padding-top: 5px;
+}

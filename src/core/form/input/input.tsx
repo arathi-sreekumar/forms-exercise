@@ -42,7 +42,7 @@ export const Input: React.FC<InputProps> = ({
   const showError = isDirty && !isValid;
 
   return (
-    <div className={clsx({['formField']: true, ['error']: showError})}>
+    <div className={clsx({['form-field']: true, ['error']: showError})}>
       <label htmlFor={id}>
         {label}
         {required && <span className="required-symbol">*</span>}
@@ -57,7 +57,7 @@ export const Input: React.FC<InputProps> = ({
         required={required}
         {...props}
       />
-      {<div className='errorMessage'>{isDirty && error}</div>}
+      {<div className='error-message'>{isDirty && error}</div>}
     </div>
   )
 }

@@ -6,8 +6,6 @@ import userEvent from '@testing-library/user-event';
 describe('<OnBoarding> component', () => {
   test('renders a user form', () => {
     render(<OnBoarding />);
-    const header = screen.getByText(/Join us/i);
-    expect(header).toBeInTheDocument();
 
     expect(screen.queryByText(/Name:/i)).toBeInTheDocument();
     expect(screen.queryByText(/Role:/i)).toBeInTheDocument();

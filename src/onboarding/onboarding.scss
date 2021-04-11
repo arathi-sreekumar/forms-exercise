@@ -1,10 +1,16 @@
 .main {
+  background-color: white;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 100%;;
-  max-width: 1024px;
   margin: 0 auto;
-  padding: 20px 40px;
-  background-color: white;
+  max-width: 1024px;
   min-height: 100vh;
+  padding: 20px 40px;
+  width: 100%;
+
+  h2 {
+    font-family: cursive;
+    text-align: left;
+  }
 }

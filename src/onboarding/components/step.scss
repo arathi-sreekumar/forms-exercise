@@ -1,0 +1,37 @@
+.step-wrapper {
+  display: flex;
+  text-align: left;
+}
+
+.step-main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.step-action {
+  text-align: right;
+  max-width: 400px;;
+}
+
+.step-image {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  img {
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .step-image {
+    display: none;
+  }
+
+  .step-main {
+    align-items: center;
+  }
+}

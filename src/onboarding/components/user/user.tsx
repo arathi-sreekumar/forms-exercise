@@ -4,6 +4,9 @@ import { User } from '../../../core/types';
 import { VALIDATION_EMAIL_REGEX, VALIDATION_PASSWORD_REGEX } from '../../../core/constants';
 import { Input } from '../../../core/form/input/input';
 import { Button } from '../../../core/form/button/button';
+import joinUS from '../../../assets/images/robot.png';
+
+import './user.scss';
 
 interface Props {
   user: User;
@@ -111,50 +114,59 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
   }
 
   return (
-    <div>
-      <h2>User</h2>
-      <Input
-        id="name"
-        value={user.name}
-        onChange={handleChange('name')}
-        onBlur={handleBlur('name')}
-        label="Name: "
-        isValid={!hasError('name')}
-        error={getError('name')}
-        required={true}
-      />
-      <Input
-        id="role"
-        value={user.role || ''}
-        onChange={handleChange('role')}
-        onBlur={handleBlur('role')}
-        label="Role: "
-        isValid={true}
-        required={false}
-      />
-      <Input
-        id="email"
-        value={user.email}
-        onChange={handleChange('email')}
-        onBlur={handleBlur('email')}
-        label="Email: "
-        isValid={!hasError('email')}
-        error={getError('email')}
-        required={true}
-      />
-      <Input
-        id="password"
-        value={user.password}
-        onChange={handleChange('password')}
-        onBlur={handleBlur('password')}
-        label="Password: "
-        isValid={!hasError('password')}
-        error={getError('password')}
-        required={true}
-        type="password"
-      />
-      <div>
-        <Button disabled={!isValid} onClick={submitUser} data-testid="submit-user">Submit</Button>
+    <div className="step-wrapper">
+      <div className="step-main">
+        <h2>User</h2>
+        <Input
+          id="name"
+          value={user.name}
+          onChange={handleChange('name')}
+          onBlur={handleBlur('name')}
+          label="Name: "
+          isValid={!hasError('name')}
+          error={getError('name')}
+          required={true}
+        />
+        <Input
+          id="role"
+          value={user.role || ''}
+          onChange={handleChange('role')}
+          onBlur={handleBlur('role')}
+          label="Role: "
+          isValid={true}
+          required={false}
+        />
+        <Input
+          id="email"
+          value={user.email}
+          onChange={handleChange('email')}
+          onBlur={handleBlur('email')}
+          label="Email: "
+          isValid={!hasError('email')}
+          error={getError('email')}
+          required={true}
+        />
+        <Input
+          id="password"
+          value={user.password}
+          onChange={handleChange('password')}
+          onBlur={handleBlur('password')}
+          label="Password: "
+          isValid={!hasError('password')}
+          error={getError('password')}
+          required={true}
+          type="password"
+        />
+        <div className="step-action">
+          <Button disabled={!isValid} onClick={submitUser} data-testid="submit-user">Submit</Button>
+        </div>
+      </div>
+      <div className="step-image">
+        <img
+          src={joinUS}
+          alt="Join us image"
+          aria-role="presentation"
+        />
       </div>
     </div>
   );

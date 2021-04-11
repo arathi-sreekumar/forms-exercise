@@ -1,7 +1,8 @@
+@import '../form.scss';
+
 .checkbox {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 20px;
 
   input {
     opacity: 0;
@@ -58,12 +59,4 @@
   input[type="checkbox"]:focus + label::before {
     outline: rgb(59, 153, 252) auto 5px;
   }
-}
-
-.errorMessage {
-  color: red;
-  text-transform: uppercase;
-  font-size: 10px;
-  height: 12px;
-  padding-top: 5px;
 }

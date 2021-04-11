@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../../core/form/button/button';
 import { Checkbox } from '../../../core/form/checkbox/checkbox';
 import { Privacy } from '../../../core/types';
+import PrivacyImage from '../../../assets/images/privacy.png';
 
 interface Props {
   privacy: Privacy;
@@ -28,24 +29,33 @@ export const PrivacyStep: React.FC<Props> = ({
   }
 
   return (
-    <div>
-      <h2>Privacy</h2>
-      <div>
-        <Checkbox
-          label="Recieve updates about Tray.io products by email"
-          id="recieve-tray-updates"
-          checked={privacy.allowTrayProductEmails}
-          onChange={handleChange('allowTrayProductEmails')}
-        />
-        <Checkbox
-          label="Recieve communication by email for other products created by the Tray.io team"
-          id="receive-other-updates"
-          checked={privacy.allowOtherProductEmails}
-          onChange={handleChange('allowOtherProductEmails')}
-        />
+    <div className="step-wrapper">
+      <div className="step-main">
+        <h2>Privacy</h2>
+        <div>
+          <Checkbox
+            label="Recieve updates about Tray.io products by email"
+            id="recieve-tray-updates"
+            checked={privacy.allowTrayProductEmails}
+            onChange={handleChange('allowTrayProductEmails')}
+          />
+          <Checkbox
+            label="Recieve communication by email for other products created by the Tray.io team"
+            id="receive-other-updates"
+            checked={privacy.allowOtherProductEmails}
+            onChange={handleChange('allowOtherProductEmails')}
+          />
+        </div>
+        <div>
+          <Button onClick={submitPrivacy} data-testid="submit-user">Submit</Button>
+        </div>
       </div>
-      <div>
-        <Button onClick={submitPrivacy} data-testid="submit-user">Submit</Button>
+      <div className="step-image">
+        <img
+          src={PrivacyImage}
+          alt="Privacy image"
+          aria-role="presentation"
+        />
       </div>
     </div>
   );

@@ -17,12 +17,12 @@ export const Checkbox: React.FC<InputProps> = ({
   ...props
 }) => {
   return (
-    <React.Fragment>
+    <div className="form-field">
       <div className="checkbox">
         <input type="checkbox" {...props} id={id} />
         <label htmlFor={id}>{label}</label>
       </div>
-      {error && <div className='errorMessage'>{error}</div>}
-    </React.Fragment>
+      {error && <div className='error-message'>{error}</div>}
+    </div>
   )
 }

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { User } from '../../../core/types';
-import { VALIDATION_EMAIL_REGEX, VALIDATION_PASSWORD_REGEX } from '../../../core/constants';
 import { Input } from '../../../core/form/input/input';
 import { Button } from '../../../core/form/button/button';
 import joinUS from '../../../assets/images/robot.png';
 
 import './user.scss';
+import { validate } from '../../../core/utils';
 
 interface Props {
   user: User;
@@ -33,7 +33,7 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
   const [errors, setErrors] = useState<Errors>();
 
   useEffect(() => {
-    validate(user);
+    validateUser(user);
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getError = (field: keyof Errors) => {
@@ -45,32 +45,32 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
   }
 
   const validateName = (name: string) => {
-    if (!name || !name.length) {
+    if (!validate.required(name)) {
       return ERROR_MSGS.REQUIRED_NAME;
     }
   }
 
   const validateEmail = (email: string) => {
-    if (!email || !email.length) {
+    if (!validate.required(email)) {
       return ERROR_MSGS.REQUIRED_EMAIL;
     }
 
-    if (!VALIDATION_EMAIL_REGEX.test(email)) {
+    if (!validate.email(email)) {
       return ERROR_MSGS.INVALID_EMAIL;
     }
   }
 
   const validatePassword = (password: string) => {
-    if (!password || !password.length) {
+    if (!validate.required(password)) {
       return ERROR_MSGS.REQUIRED_PASSWORD;
     }
 
-    if (!VALIDATION_PASSWORD_REGEX.test(password)) {
+    if (!validate.password(password)) {
       return ERROR_MSGS.INVALID_PASSWORD;
     }
   }
 
-  const validate = (userToValidate: User) => {
+  const validateUser = (userToValidate: User) => {
     const newErrors = {
       name: validateName(userToValidate.name),
       email: validateEmail(userToValidate.email),

@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders Onboarding page', () => {
   render(<App />);
-  const joinUsText = screen.getByText(/Join us/i);
+  const joinUsText = screen.getByText(/Register with us/i);
   expect(joinUsText).toBeInTheDocument();
 });

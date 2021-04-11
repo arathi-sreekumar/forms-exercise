@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# A multipage form example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -20,7 +19,7 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `yarn test:ci`
-Launches the test runner and generates the coverage.
+Runs the test runner and generates the coverage.
 
 ### Linting commands
 The following command are available for linting:
@@ -40,6 +39,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Additional notes:
 
-In this project custom input components have been created, but for a large scale project it might be worth considering using a component library such as material.ui for this purpose.
+In this project custom input components have been created, but for a large scale project I might consider using a component library such as material.ui for this purpose.
+
+I considered saving state between pages in local storage to avoid data loss due to hard refresh but since the form data is sensitive information decided not to do so.
 
 The images used here to the best of my knowledge are free for use.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

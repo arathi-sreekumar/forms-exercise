@@ -96,8 +96,9 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
     const newErrors: Errors = {
       ...errors
     };
+
     switch (field) {
-      case 'name': newErrors.name = validateName(user.name);
+      case 'name': newErrors.name = validateName(user.name.trim());
         break;
       case 'email': newErrors.email = validateEmail(user.email);
         break;
@@ -105,6 +106,14 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         break;
       default: //nothing required
     }
+
+    if (user[field] !== user[field]?.trim()) {
+      setUser({
+        ...user,
+        [field]: user[field]?.trim()
+      });
+    }
+
 
     setErrors(newErrors);
   }
@@ -165,7 +174,6 @@ export const UserStep: React.FC<Props> = ({ user: userProp, onSubmit }) => {
         <img
           src={joinUS}
           alt="Join us image"
-          aria-role="presentation"
         />
       </div>
     </div>

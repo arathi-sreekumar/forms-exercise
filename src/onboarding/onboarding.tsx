@@ -51,6 +51,7 @@ export const OnBoarding = () => {
 
   return (
     <main className="main">
+      <h1>Register with us</h1>
       <ProgressBar currentStep={step} />
       {getStepToDisplay()}
     </main>

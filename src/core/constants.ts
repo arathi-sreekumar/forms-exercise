@@ -5,4 +5,4 @@ export enum STEPS {
 }
 
 export const VALIDATION_EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-export const VALIDATION_PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{9,}$/;
+export const VALIDATION_PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{9,32}$/;

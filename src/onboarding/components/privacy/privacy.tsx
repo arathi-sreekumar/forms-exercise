@@ -54,7 +54,6 @@ export const PrivacyStep: React.FC<Props> = ({
         <img
           src={PrivacyImage}
           alt="Privacy image"
-          aria-role="presentation"
         />
       </div>
     </div>

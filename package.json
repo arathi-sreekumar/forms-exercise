@@ -22,8 +22,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "env CI=true react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "lint-code": "eslint -c ./.eslintrc.js --ext=js,jsx,ts,tsx ./src"
+    "lint-code": "eslint -c ./.eslintrc.js --ext=js,jsx,ts,tsx ./src",
+    "lint-commit": "commitlint --from HEAD~1 --to HEAD",
+    "lint-styles": "stylelint ./src/**/*.scss --config ./.stylelintrc.json"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "stylelint": "^13.10.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-order": "^4.1.0"
   },
   "eslintConfig": {
     "extends": [
